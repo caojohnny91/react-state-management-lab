@@ -86,6 +86,8 @@ const App = () => {
   return (
 
     <>
+    Money: {money}
+    
     {zombieFighters.map((attributes, index) => (
       <FighterAttributes key={index} {...attributes} />
     ))}
