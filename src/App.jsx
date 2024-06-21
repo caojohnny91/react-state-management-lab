@@ -82,15 +82,21 @@ const App = () => {
     },
   ]);
 
+  const handleAddFighter = (addFighter) => {
+    console.log(addFighter);
+  }
+
 
   return (
-
     <>
-    Money: {money}
+    <h1>Zombie Fighters</h1>
     
+    Money: {money}
+
     {zombieFighters.map((attributes, index) => (
       <FighterAttributes key={index} {...attributes} />
     ))}
+    
 
     
     
