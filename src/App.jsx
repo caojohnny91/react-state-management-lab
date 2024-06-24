@@ -83,8 +83,12 @@ const App = () => {
   ]);
 
   const handleAddFighter = (addFighter) => {
-    setTeam((team) => [...team, addFighter])
-    setMoney((money) => money - addFighter.price)
+    if (money >= addFighter.price) {
+      setTeam((team) => [...team, addFighter]);
+      setMoney((money) => money - addFighter.price);
+    } else {
+      console.log("Not enough money"); 
+    }
   };
 
   return (
@@ -94,13 +98,18 @@ const App = () => {
       <h2>Team Strength: </h2>
       <h2>Team Agility: </h2>
       <h2>Team</h2>
+
       <TeamMember team={team} />
 
+      <h2>Fighters</h2>
       <ul>
-      {zombieFighters.map((attributes, index) => (
-        <FighterAttributes key={index} {...attributes} handleAddFighter={() => handleAddFighter(attributes)} />
-      ))}
-
+        {zombieFighters.map((attributes, index) => (
+          <FighterAttributes
+            key={index}
+            {...attributes}
+            handleAddFighter={() => handleAddFighter(attributes)}
+          />
+        ))}
       </ul>
     </>
   );
