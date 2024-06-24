@@ -84,6 +84,7 @@ const App = () => {
 
   const handleAddFighter = (addFighter) => {
     setTeam((team) => [...team, addFighter])
+    setMoney((money) => money - addFighter.price)
   };
 
   return (
