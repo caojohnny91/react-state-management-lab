@@ -4,102 +4,98 @@ import FighterAttributes from "./components/FighterAttributes/FighterAttributes.
 import "./App.css";
 
 const App = () => {
-
   const [team, setTeam] = useState([]);
 
   const [money, setMoney] = useState(100);
 
   const [zombieFighters, setZombieFighters] = useState([
     {
-      name: 'Survivor',
+      name: "Survivor",
       price: 12,
       strength: 6,
       agility: 4,
-      img: 'https://via.placeholder.com/150/92c952',
+      img: "https://via.placeholder.com/150/92c952",
     },
     {
-      name: 'Scavenger',
+      name: "Scavenger",
       price: 10,
       strength: 5,
       agility: 5,
-      img: 'https://via.placeholder.com/150/771796',
+      img: "https://via.placeholder.com/150/771796",
     },
     {
-      name: 'Shadow',
+      name: "Shadow",
       price: 18,
       strength: 7,
       agility: 8,
-      img: 'https://via.placeholder.com/150/24f355',
+      img: "https://via.placeholder.com/150/24f355",
     },
     {
-      name: 'Tracker',
+      name: "Tracker",
       price: 14,
       strength: 7,
       agility: 6,
-      img: 'https://via.placeholder.com/150/d32776',
+      img: "https://via.placeholder.com/150/d32776",
     },
     {
-      name: 'Sharpshooter',
+      name: "Sharpshooter",
       price: 20,
       strength: 6,
       agility: 8,
-      img: 'https://via.placeholder.com/150/1ee8a4',
+      img: "https://via.placeholder.com/150/1ee8a4",
     },
     {
-      name: 'Medic',
+      name: "Medic",
       price: 15,
       strength: 5,
       agility: 7,
-      img: 'https://via.placeholder.com/150/66b7d2',
+      img: "https://via.placeholder.com/150/66b7d2",
     },
     {
-      name: 'Engineer',
+      name: "Engineer",
       price: 16,
       strength: 6,
       agility: 5,
-      img: 'https://via.placeholder.com/150/56acb2',
+      img: "https://via.placeholder.com/150/56acb2",
     },
     {
-      name: 'Brawler',
+      name: "Brawler",
       price: 11,
       strength: 8,
       agility: 3,
-      img: 'https://via.placeholder.com/150/8985dc',
+      img: "https://via.placeholder.com/150/8985dc",
     },
     {
-      name: 'Infiltrator',
+      name: "Infiltrator",
       price: 17,
       strength: 5,
       agility: 9,
-      img: 'https://via.placeholder.com/150/392537',
+      img: "https://via.placeholder.com/150/392537",
     },
     {
-      name: 'Leader',
+      name: "Leader",
       price: 22,
       strength: 7,
       agility: 6,
-      img: 'https://via.placeholder.com/150/602b9e',
+      img: "https://via.placeholder.com/150/602b9e",
     },
   ]);
 
   const handleAddFighter = (addFighter) => {
     console.log(addFighter);
-  }
-
+  };
 
   return (
     <>
-    <h1>Zombie Fighters</h1>
-    
-    Money: {money}
+      <h1>Zombie Fighters</h1>
+      <h2>Money: {money}</h2>
+      <h2>Team Strength: </h2>
+      <h2>Team Agility: </h2>
+      <h2>Team</h2>
 
-    {zombieFighters.map((attributes, index) => (
-      <FighterAttributes key={index} {...attributes} />
-    ))}
-    
-
-    
-    
+      {zombieFighters.map((attributes, index) => (
+        <FighterAttributes key={index} {...attributes} />
+      ))}
     </>
   );
 };

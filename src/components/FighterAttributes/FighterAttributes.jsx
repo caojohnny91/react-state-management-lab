@@ -1,17 +1,16 @@
 const FighterAttributes = (attributes) => {
-    const{img, name, price, strength, agility} = attributes;
+  const { img, name, price, strength, agility } = attributes;
 
-    return (
-        <ul>
-            <img src={img}/>
-            <li>{name}</li>
-            <li>Price: {price}</li>
-            <li>Strength: {strength}</li>
-            <li>Agility: {agility}</li>
-            <button onClick={() => handleAddFighter({name})}>Add</button>
-        </ul>
-
-    )
-}
+  return (
+    <li>
+      <img src={img} />
+      <p>{name}</p>
+      <p>Price: {price}</p>
+      <p>Strength: {strength}</p>
+      <p>Agility: {agility}</p>
+      <button onClick={() => handleAddFighter({ name })}>Add</button>
+    </li>
+  );
+};
 
 export default FighterAttributes;
