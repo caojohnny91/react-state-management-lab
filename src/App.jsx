@@ -1,6 +1,7 @@
 // src/App.jsx
 import { useState } from "react";
 import FighterAttributes from "./components/FighterAttributes/FighterAttributes.jsx";
+import TeamMember from "./components/TeamMember.jsx";
 import "./App.css";
 
 const App = () => {
@@ -82,7 +83,7 @@ const App = () => {
   ]);
 
   const handleAddFighter = (addFighter) => {
-    console.log(addFighter);
+    setTeam((team) => [...team, addFighter])
   };
 
   return (
@@ -92,10 +93,14 @@ const App = () => {
       <h2>Team Strength: </h2>
       <h2>Team Agility: </h2>
       <h2>Team</h2>
+      <TeamMember team={team} />
 
+      <ul>
       {zombieFighters.map((attributes, index) => (
-        <FighterAttributes key={index} {...attributes} />
+        <FighterAttributes key={index} {...attributes} handleAddFighter={() => handleAddFighter(attributes)} />
       ))}
+
+      </ul>
     </>
   );
 };

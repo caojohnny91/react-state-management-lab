@@ -1,5 +1,5 @@
 const FighterAttributes = (attributes) => {
-  const { img, name, price, strength, agility } = attributes;
+  const { img, name, price, strength, agility, handleAddFighter } = attributes;
 
   return (
     <li>
@@ -8,7 +8,7 @@ const FighterAttributes = (attributes) => {
       <p>Price: {price}</p>
       <p>Strength: {strength}</p>
       <p>Agility: {agility}</p>
-      <button onClick={() => handleAddFighter({ name })}>Add</button>
+      <button onClick={handleAddFighter}>Add</button>
     </li>
   );
 };
