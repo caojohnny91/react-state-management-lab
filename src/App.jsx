@@ -1,5 +1,5 @@
 // src/App.jsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FighterAttributes from "./components/FighterAttributes/FighterAttributes.jsx";
 import TeamMember from "./components/TeamMember.jsx";
 import "./App.css";
@@ -8,6 +8,8 @@ const App = () => {
   const [team, setTeam] = useState([]);
 
   const [money, setMoney] = useState(100);
+
+  const [totalStrength, setTotalStrength] = useState(0);
 
   const [zombieFighters, setZombieFighters] = useState([
     {
@@ -82,23 +84,36 @@ const App = () => {
     },
   ]);
 
+  const calculateTotalStrength = (team =>{
+    return team.reduce((total, fighter) => total + fighter.strength, 0)
+  })
+
   const handleAddFighter = (addFighter) => {
     if (money >= addFighter.price) {
       setTeam((team) => [...team, addFighter]);
       setMoney((money) => money - addFighter.price);
+      setTotalStrength(calculateTotalStrength(newTeam));
     } else {
-      console.log("Not enough money"); 
+      console.log("Not enough money");
     }
   };
+
+  useEffect(() => {
+    setTotalStrength(calculateTotalStrength(team));
+  }, [team]);
 
   return (
     <>
       <h1>Zombie Fighters</h1>
       <h2>Money: ${money}</h2>
-      <h2>Team Strength: </h2>
+      <h2>Team Strength: {totalStrength}</h2>
       <h2>Team Agility: </h2>
       <h2>Team</h2>
-        {team.length === 0 ? (<p>Pick some team members!</p>) : (<TeamMember team={team} />)}
+      {team.length === 0 ? (
+        <p>Pick some team members!</p>
+      ) : (
+        <TeamMember team={team} />
+      )}
 
       <h2>Fighters</h2>
       <ul>
