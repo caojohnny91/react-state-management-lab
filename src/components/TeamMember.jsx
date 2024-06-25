@@ -1,6 +1,4 @@
 import { useState } from "react";
-// import App from "../App.jsx";
-// import FighterAttributes from "./FighterAttributes/FighterAttributes.jsx";
 
 const TeamMember = ({ team, handleRemoveFighter }) => {
   return (
