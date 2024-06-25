@@ -94,12 +94,11 @@ const App = () => {
   return (
     <>
       <h1>Zombie Fighters</h1>
-      <h2>Money: {money}</h2>
+      <h2>Money: ${money}</h2>
       <h2>Team Strength: </h2>
       <h2>Team Agility: </h2>
       <h2>Team</h2>
-
-      <TeamMember team={team} />
+        {team.length === 0 ? (<p>Pick some team members!</p>) : (<TeamMember team={team} />)}
 
       <h2>Fighters</h2>
       <ul>
