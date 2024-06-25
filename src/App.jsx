@@ -11,6 +11,8 @@ const App = () => {
 
   const [totalStrength, setTotalStrength] = useState(0);
 
+  const [totalAgility, setTotalAgility] = useState(0);
+
   const [zombieFighters, setZombieFighters] = useState([
     {
       name: "Survivor",
@@ -88,11 +90,16 @@ const App = () => {
     return team.reduce((total, fighter) => total + fighter.strength, 0)
   })
 
+  const calculateTotalAgility = (team =>{
+    return team.reduce((total, fighter) => total + fighter.agility, 0)
+  })
+
   const handleAddFighter = (addFighter) => {
     if (money >= addFighter.price) {
       setTeam((team) => [...team, addFighter]);
       setMoney((money) => money - addFighter.price);
       setTotalStrength(calculateTotalStrength(newTeam));
+      setTotalAgility(calculateTotalAgility(newTeam));
     } else {
       console.log("Not enough money");
     }
@@ -102,12 +109,16 @@ const App = () => {
     setTotalStrength(calculateTotalStrength(team));
   }, [team]);
 
+  useEffect(() =>{
+    setTotalAgility(calculateTotalAgility(team))
+  }, [team])
+
   return (
     <>
       <h1>Zombie Fighters</h1>
       <h2>Money: ${money}</h2>
       <h2>Team Strength: {totalStrength}</h2>
-      <h2>Team Agility: </h2>
+      <h2>Team Agility: {totalAgility}</h2>
       <h2>Team</h2>
       {team.length === 0 ? (
         <p>Pick some team members!</p>
