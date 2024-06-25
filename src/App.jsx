@@ -87,14 +87,14 @@ const App = () => {
     },
   ]);
 
-  const calculateTotalStrength = (team =>{
-    return team.reduce((total, fighter) => total + fighter.strength, 0)
-  })
+  const calculateTotalStrength = (team) => {
+    return team.reduce((total, fighter) => total + fighter.strength, 0);
+  };
   // caltotstrength is a helper function that calculates the total strength of the team by summing up the strength values of all characters in the team. takes the team array as an argument and returns the sum of the strength values of all fighters in the team. This function uses the reduce method to accumulate the total strength, starting from 0
 
-  const calculateTotalAgility = (team =>{
-    return team.reduce((total, fighter) => total + fighter.agility, 0)
-  })
+  const calculateTotalAgility = (team) => {
+    return team.reduce((total, fighter) => total + fighter.agility, 0);
+  };
 
   const handleAddFighter = (addFighter) => {
     if (money >= addFighter.price) {
@@ -108,19 +108,22 @@ const App = () => {
     }
   };
 
-  const handleRemoveFighter = (removeFighter) =>{
-
-  }
+  const handleRemoveFighter = (removeFighter) => {
+    const newTeam = team.filter((fighter) => fighter !== removeFighter);
+    setTeam(newTeam);
+    setMoney((money) => money + removeFighter.price);
+    setTotalStrength(calculateTotalStrength(newTeam));
+    setTotalAgility(calculateTotalAgility(newTeam));
+  };
 
   useEffect(() => {
     setTotalStrength(calculateTotalStrength(team));
   }, [team]);
   // The useEffect hook ensures that totalStrength is recalculated and updated whenever the team state changes.
 
-
-  useEffect(() =>{
-    setTotalAgility(calculateTotalAgility(team))
-  }, [team])
+  useEffect(() => {
+    setTotalAgility(calculateTotalAgility(team));
+  }, [team]);
 
   return (
     <>
@@ -132,7 +135,7 @@ const App = () => {
       {team.length === 0 ? (
         <p>Pick some team members!</p>
       ) : (
-        <TeamMember team={team} />
+        <TeamMember team={team} handleRemoveFighter={handleRemoveFighter} />
       )}
 
       <h2>Fighters</h2>

@@ -2,7 +2,7 @@ import { useState } from "react";
 // import App from "../App.jsx";
 // import FighterAttributes from "./FighterAttributes/FighterAttributes.jsx";
 
-const TeamMember = ({ team }) => {
+const TeamMember = ({ team, handleRemoveFighter }) => {
   return (
     <ul>
       {team.map((fighter, index) => (
@@ -12,7 +12,7 @@ const TeamMember = ({ team }) => {
           <p>Price: {fighter.price}</p>
           <p>Strength: {fighter.strength}</p>
           <p>Agility: {fighter.agility}</p>
-          <button onClick={handleRemoveFighter}>Remove</button>
+          <button onClick={() => handleRemoveFighter(fighter)}>Remove</button>
         </li>
       ))}
     </ul>
