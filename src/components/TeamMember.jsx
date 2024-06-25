@@ -12,6 +12,7 @@ const TeamMember = ({ team }) => {
           <p>Price: {fighter.price}</p>
           <p>Strength: {fighter.strength}</p>
           <p>Agility: {fighter.agility}</p>
+          <button onClick={handleRemoveFighter}>Remove</button>
         </li>
       ))}
     </ul>

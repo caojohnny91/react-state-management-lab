@@ -10,6 +10,7 @@ const App = () => {
   const [money, setMoney] = useState(100);
 
   const [totalStrength, setTotalStrength] = useState(0);
+  // initialize a new state variable named totalStrength to keep track of the total strength of the team. This state is initially set to 0.
 
   const [totalAgility, setTotalAgility] = useState(0);
 
@@ -89,6 +90,7 @@ const App = () => {
   const calculateTotalStrength = (team =>{
     return team.reduce((total, fighter) => total + fighter.strength, 0)
   })
+  // caltotstrength is a helper function that calculates the total strength of the team by summing up the strength values of all characters in the team. takes the team array as an argument and returns the sum of the strength values of all fighters in the team. This function uses the reduce method to accumulate the total strength, starting from 0
 
   const calculateTotalAgility = (team =>{
     return team.reduce((total, fighter) => total + fighter.agility, 0)
@@ -99,15 +101,22 @@ const App = () => {
       setTeam((team) => [...team, addFighter]);
       setMoney((money) => money - addFighter.price);
       setTotalStrength(calculateTotalStrength(newTeam));
+      // The handleAddFighter function updates totalStrength whenever a new fighter is added to the team. cal and updates total strength using the helper function
       setTotalAgility(calculateTotalAgility(newTeam));
     } else {
       console.log("Not enough money");
     }
   };
 
+  const handleRemoveFighter = (removeFighter) =>{
+
+  }
+
   useEffect(() => {
     setTotalStrength(calculateTotalStrength(team));
   }, [team]);
+  // The useEffect hook ensures that totalStrength is recalculated and updated whenever the team state changes.
+
 
   useEffect(() =>{
     setTotalAgility(calculateTotalAgility(team))
